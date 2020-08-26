@@ -1,3 +1,9 @@
+#Got help from Jacob Knaust :) 
+
+
+
+
+
 # Assessment: Todos Part 1
 
 Fork then clone this repository: [https://gitlab.com/vstlouis.kenzie/todo-app-pt-1](https://gitlab.com/vstlouis.kenzie/todo-app-pt-1)
