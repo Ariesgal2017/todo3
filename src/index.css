@@ -25,8 +25,8 @@ button {
 body {
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.4em;
-  background: #f5f5f5;
-  color: #4d4d4d;
+  background: lightcyan;
+  color: limegreen;
   min-width: 230px;
   max-width: 550px;
   margin: 0 auto;
@@ -47,25 +47,25 @@ body {
   background: #fff;
   margin: 130px 0 40px 0;
   position: relative;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px 0 black, 0 25px 50px 0 hotpink;
 }
 
 .todoapp input::-webkit-input-placeholder {
   font-style: italic;
   font-weight: 300;
-  color: #e6e6e6;
+  color: lightgreen;
 }
 
 .todoapp input::-moz-placeholder {
   font-style: italic;
   font-weight: 300;
-  color: #e6e6e6;
+  color: yellow;
 }
 
 .todoapp input::input-placeholder {
   font-style: italic;
   font-weight: 300;
-  color: #e6e6e6;
+  color: lime;
 }
 
 .todoapp h1 {
@@ -75,7 +75,7 @@ body {
   font-size: 100px;
   font-weight: 100;
   text-align: center;
-  color: rgba(175, 47, 47, 0.15);
+  color: hotpink;
   -webkit-text-rendering: optimizeLegibility;
   -moz-text-rendering: optimizeLegibility;
   text-rendering: optimizeLegibility;
@@ -93,7 +93,7 @@ body {
   border: 0;
   color: inherit;
   padding: 6px;
-  border: 1px solid #999;
+  border: 1px solid lightcoral;
   box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
@@ -103,14 +103,14 @@ body {
 .new-todo {
   padding: 16px 16px 16px 60px;
   border: none;
-  background: rgba(0, 0, 0, 0.003);
+  background: rgb(196, 3, 109);
   box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
 }
 
 .main {
   position: relative;
   z-index: 2;
-  border-top: 1px solid #e6e6e6;
+  border-top: 1px solid rgb(218, 147, 158);
 }
 
 .toggle-all {
@@ -218,7 +218,7 @@ body {
 }
 
 .todo-list li.completed label {
-  color: #d9d9d9;
+  color: red;
   text-decoration: line-through;
 }
 
