@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import todosList from "./todos.json";
 import TodoList from './components/TodoList/TodoList';
 import {Switch, Route, NavLink} from 'react-router-dom';
+import todo from './components/TodoItem/TodoItem'
 
 class App extends Component {
   state = {
@@ -15,12 +16,12 @@ class App extends Component {
         "userId": 1,
         "id": Math.random()*10000,
         "title": newTodoItem,
-        "completed": false
+        "completed": false,
       }
       this.setState(state=>{
         return {
-          todos:[newTodo, ...state.todos],
-          text: ""
+          todos:[newTodo, ...state.todos.list],
+          text: "",
       }
 
       })
@@ -42,8 +43,8 @@ class App extends Component {
   }
   handleDeleteCompleted = () => {
     const newTodos = this.state.todos.filter(
-      todoItem => todoItem.completed !== true
-    )
+      todoItem => todoItem.completed !== true)
+    
     this.setState({
       todos: newTodos
     })
@@ -51,9 +52,9 @@ class App extends Component {
   handleToggle = (id) => {
     let newTodos = this.state.todos.map(
       todo => {
-        if(todo.id === id){
+        if(todo.id <= 3){
           return {
-            ...todo, completed: !todo.completed
+            ...todo, completed: !todo.completed, list: todo.list
           }
         }
         return {
@@ -65,11 +66,11 @@ class App extends Component {
       })
     }
  
-render() {
+render(){
   return (
     <section className="todoapp">
       <header className="header">
-        <h1>todos</h1>
+        <h1>{todo.list}Todos</h1>
         <input 
         onChange={this.handleChange}
         onKeyDown ={this.handleAddTodo} 
@@ -80,6 +81,19 @@ render() {
         />
       </header>
       <Switch>
+      <Route
+    exact
+    path="/:list"
+    render={props => (
+      <TodoList
+        todos={this.state.todos.filter(todo => todo.list === props.match.params.list)}
+        handleToggle={this.handleToggle} 
+      handleDelete ={this.handleDelete}
+      handleDeleteCompleted ={this.handleDeleteCompleted}
+      />
+    )}
+/>
+
       <Route 
       exact
       path="/"
@@ -93,9 +107,9 @@ render() {
       />
       <Route 
       exact
-      path="/active"
+      path="/:list/active"
       render = {(props) =>  <TodoList 
-      todos={this.state.todos.filter(todoItem => todoItem.completed !== true)} 
+        todos={this.state.todos.filter(todo => todo.list === props.match.params.list)}
       handleToggle={this.handleToggle} 
       handleDelete ={this.handleDelete}
       handleDeleteCompleted ={this.handleDeleteCompleted}
@@ -104,7 +118,7 @@ render() {
       />
        <Route 
       exact
-      path="/completed"
+      path="/:list/completed"
       render = {(props) =>  <TodoList 
       todos={this.state.todos.filter(todoItem => todoItem.completed === true)} 
       handleToggle={this.handleToggle} 
